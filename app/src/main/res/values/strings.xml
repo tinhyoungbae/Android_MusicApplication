@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Music</string>
+    <string name="main_banner">Nghe nhạc miễn phí</string>
+    <string name="username">Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="remember">Ghi nhớ tôi</string>
+    <string name="login">Đăng nhập</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="register">Đăng ký</string>
+    <string name="non_login">Bỏ qua</string>
+    <string name="inputpassword">********</string>
+    <string name="inputusername">abc@gmail.com</string>
+    <string name="main_banner_register">Đăng ký</string>
+    <string name="name">Họ tên</string>
+    <string name="name_input">Nhập họ tên</string>
+    <string name="password_repeat">Nhập lại mật khẩu</string>
+    <string name="guide">Hướng dẫn</string>
+    <string name="resetpassword">Đặt lại mật khẩu</string>
+    <string name="reset">Đặt lại</string>
+    <string name="nonlogin">Bạn chưa đăng nhập</string>
+    <string name="reset_password_content_result">Nhập vào email sau đó nhấn vào nút Đặt lại</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

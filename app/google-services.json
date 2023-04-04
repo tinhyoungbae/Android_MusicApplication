@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "913721045195",
+    "project_id": "music-2b92e",
+    "storage_bucket": "music-2b92e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913721045195:android:dd0b18f6b917a4d76a6b4e",
+        "android_client_info": {
+          "package_name": "com.example.music"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913721045195-9g0lj91ist0hdb3nci9qmt80fv5m9f2s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.music",
+            "certificate_hash": "a1b5e4e370dd4b5571cbc064c045624b39f6ad2a"
+          }
+        },
+        {
+          "client_id": "913721045195-pvk33f5iob3bn3tonhd902h8p3a6sq27.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUIcIga0802Mc3Hhlp1OXpdKf2IRc0RQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913721045195-pvk33f5iob3bn3tonhd902h8p3a6sq27.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
