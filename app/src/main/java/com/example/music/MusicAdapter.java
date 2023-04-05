@@ -7,12 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.music.fragment.MusicFragment;
-
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
+//Custom Adapter cho Song
 public class MusicAdapter extends BaseAdapter {
     private Context context;
     private int layout;
@@ -53,7 +50,6 @@ public class MusicAdapter extends BaseAdapter {
         Song song = songList.get(i);
         getName.setText(song.getName());
         getDur.setText(song.getDuration());
-
 
         return view;
     }

@@ -9,6 +9,8 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
+
+    //Khai báo các Fragment
     public Fragment getItem(int position){
         switch (position){
             case 0:
@@ -24,7 +26,8 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         }
     }
 
+    //Số lượng Fragment
     public int getCount(){
-        return 4;
+        return 5;
     }
 }

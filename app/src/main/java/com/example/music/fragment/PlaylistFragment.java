@@ -7,59 +7,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.music.DatabaseActivity;
-import com.example.music.MusicAdapter;
 import com.example.music.MusicPlayerActivity;
 import com.example.music.PlayListAdapter;
 import com.example.music.R;
-import com.example.music.Singer;
-import com.example.music.SingerAdapter;
-import com.example.music.Song;
 import com.example.music.addToPlayList;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PlaylistFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PlaylistFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     int i;
     public static ArrayList<addToPlayList> addToPlayListArrayList;
 
     public PlaylistFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MusicFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static PlaylistFragment newInstance(String param1, String param2) {
         PlaylistFragment fragment = new PlaylistFragment();
         Bundle args = new Bundle();
@@ -81,10 +52,10 @@ public class PlaylistFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_playlist, container, false);
     }
 
+    //Đổ dữ liệu vào Adapter, gắn Adapter vào ListView
     public void addToPlayList(DatabaseActivity databaseActivity, ListView listView, PlayListAdapter playListAdapter){
         Cursor c = databaseActivity.ViewPlayList();
         c.moveToFirst();
@@ -106,8 +77,10 @@ public class PlaylistFragment extends Fragment {
         ListView listView = (ListView) view.findViewById(R.id.playlist_listview);
         PlayListAdapter playListAdapter = new PlayListAdapter(getContext(), R.id.playlist_layout, addToPlayListArrayList);
 
+        //Hiển thị dữ liệu lên ListView
         addToPlayList(databaseActivity, listView, playListAdapter);
 
+        //Sự kiện nhấn vào 1 dòng dữ liệu của ListView
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -125,6 +98,8 @@ public class PlaylistFragment extends Fragment {
                 return true;
             }
         });
+
+        //Sự kiện nhấn và giữ vào 1 dòng dữ liệu của ListView
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

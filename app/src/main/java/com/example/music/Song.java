@@ -2,6 +2,7 @@ package com.example.music;
 
 import java.io.Serializable;
 
+//Custom cho Adapter(MusicAdapter)
 public class Song implements Serializable{
     private String name;
     private String path;

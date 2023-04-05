@@ -88,7 +88,6 @@
         android:layout_width="145dp"
         android:layout_height="56dp"
         android:background="@drawable/custom_edittext"
-        android:onClick="onClickRegister"
         android:text="@string/register"
         android:textAllCaps="false"
         android:textSize="17dp"

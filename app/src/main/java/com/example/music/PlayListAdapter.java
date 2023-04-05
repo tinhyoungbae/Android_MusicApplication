@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+//Custom Adapter cho addToPlayList
 public class PlayListAdapter extends BaseAdapter {
     private Context context;
     private int layout;

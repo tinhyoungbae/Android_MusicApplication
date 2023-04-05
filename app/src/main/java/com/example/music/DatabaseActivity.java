@@ -12,6 +12,7 @@ public class DatabaseActivity extends SQLiteOpenHelper {
     static String pl_drop = "DROP TABLE IF EXISTS Playlist";
     static String TABLE_NAME = "Playlist";
     static int version = 1;
+
     public DatabaseActivity(Context context){
         super(context, dbname, null, version);
     }
@@ -25,11 +26,14 @@ public class DatabaseActivity extends SQLiteOpenHelper {
 
         }
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1){
         sqLiteDatabase.execSQL(this.pl_drop);
         onCreate(sqLiteDatabase);
     }
+
+    //Thêm một Object addToPlayList(Song) vào Database
     public boolean InsertToPlayList(addToPlayList addToPlayList) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -43,6 +47,7 @@ public class DatabaseActivity extends SQLiteOpenHelper {
         else return true;
     }
 
+    //Xóa một Object addToPlayList(Song) khỏi Database
     public boolean DeleteFromPlayList(addToPlayList addToPlayList){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -56,6 +61,8 @@ public class DatabaseActivity extends SQLiteOpenHelper {
             return false;
         else return true;
     }
+
+    //Xem tất cả các Object addToPlayList(Song) có trong Database
     public Cursor ViewPlayList(){
         Cursor c;
         SQLiteDatabase db = this.getReadableDatabase();

@@ -2,6 +2,7 @@ package com.example.music;
 
 import java.io.Serializable;
 
+//Custom cho Adapter(PlayListAdapter)
 public class addToPlayList implements Serializable {
     private String song_name;
     private String airtist_song;

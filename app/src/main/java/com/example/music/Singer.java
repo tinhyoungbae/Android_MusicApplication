@@ -1,5 +1,6 @@
 package com.example.music;
 
+//Custom cho Adapter(SingerAdapter)
 public class Singer {
     private String singer_name;
 

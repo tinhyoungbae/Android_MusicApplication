@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+//Custom Adapter cho Singer
 public class SingerAdapter extends BaseAdapter {
     private Context context;
     private int layout;

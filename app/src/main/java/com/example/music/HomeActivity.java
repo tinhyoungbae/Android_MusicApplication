@@ -1,36 +1,15 @@
 package com.example.music;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.Manifest;
-import android.database.Cursor;
-import android.media.MediaPlayer;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-
 import com.example.music.fragment.ViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.single.PermissionListener;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -40,8 +19,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        //runtimePermission();
 
         viewPager = findViewById(R.id.view_pager);
         bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -55,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
 
             }
 
+            //Mở từng Fragment trên viewPager
             @Override
             public void onPageSelected(int position) {
                 switch (position){
@@ -79,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        //Mở từng chức năng trên thanh Bot_Nav
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

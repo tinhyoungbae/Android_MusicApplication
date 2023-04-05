@@ -7,11 +7,9 @@ import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,10 +26,8 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
-import java.io.File;
-import java.util.ArrayList;
-
 public class MainActivity extends Activity {
+    //Tạo thông báo
     public static final String CHANNEL_ID = "music";
 
     public void onClickSkip(){
@@ -49,6 +45,7 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    //Xử lý sự kiện đăng nhập
     public void onClickSignIn(){
         EditText getemailmain = findViewById(R.id.emailmain);
         EditText getpasswordmain = findViewById(R.id.passwordmain);
@@ -75,6 +72,7 @@ public class MainActivity extends Activity {
         }
     }
 
+    //Tạo thông báo
     private void createNotificationChanel() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel notification = new NotificationChannel(CHANNEL_ID, "chanel music", NotificationManager.IMPORTANCE_DEFAULT);
@@ -84,6 +82,8 @@ public class MainActivity extends Activity {
             }
         }
     }
+
+    //Yêu cầu cấp quyền truy cập vào tệp tin
     public void runtimePermission(){
         Dexter.withContext(this).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new PermissionListener() {
             @Override
@@ -108,11 +108,17 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        runtimePermission();
+        TextView skip = findViewById(R.id.skip_text);
+        TextView forgot = findViewById(R.id.forgotpassword);
+        TextView register = findViewById(R.id.register);
+        Button logbtn = findViewById(R.id.loginbtn);
 
+        //Cấp quyền
+        runtimePermission();
+        //Tạo kênh thông báo trên thanh trạng thái
         createNotificationChanel();
 
-        TextView skip = findViewById(R.id.skip_text);
+        //Xử lý sự kiện chuyển trang
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,7 +126,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        TextView forgot = findViewById(R.id.forgotpassword);
+        //Xử lý sự kiện chuyển trang
         forgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,14 +134,15 @@ public class MainActivity extends Activity {
             }
         });
 
-        TextView register = findViewById(R.id.register);
+        //Xử lý sự kiện chuyển trang
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onClickRegister();
             }
         });
-        Button logbtn = findViewById(R.id.loginbtn);
+
+        //Xử lý sự kiện chuyển trang
         logbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
