@@ -45,7 +45,6 @@
         android:id="@+id/playlist_add"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:background="@drawable/heart_empty"
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
         android:padding="1dp"

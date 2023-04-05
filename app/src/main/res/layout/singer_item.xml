@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:id="@+id/singer_layout"
-    android:background="#3C3C3C">
+    android:background="#2E2E2E">
     <ImageView
         android:layout_width="64dp"
         android:layout_height="64dp"

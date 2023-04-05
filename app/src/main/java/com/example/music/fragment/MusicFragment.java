@@ -24,11 +24,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.music.DatabaseActivity;
 import com.example.music.MusicAdapter;
 import com.example.music.MusicPlayerActivity;
 import com.example.music.R;
 import com.example.music.RegisterActivity;
 import com.example.music.Song;
+import com.example.music.addToPlayList;
 
 import java.io.File;
 import java.io.IOException;
@@ -86,13 +88,13 @@ public class MusicFragment extends Fragment {
 
     public void onViewCreated(View view, Bundle saveInstanceState){
         super.onViewCreated(view, saveInstanceState);
+        DatabaseActivity databaseActivity = new DatabaseActivity(getActivity());
 
         ListView listView = (ListView)view.findViewById(R.id.ls);
         arrayList = new ArrayList<>();
         artistList = new ArrayList<>();
 
         MusicAdapter musicAdapter = new MusicAdapter(getContext(), R.id.song_layout, arrayList);
-
 
         //get all music
         Cursor cursor = getContext().getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,projection,selection,null,null);
@@ -129,7 +131,13 @@ public class MusicFragment extends Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 for (int i = 0; i < arrayList.size(); i++) {
                     if (position == i) {
-                        Toast.makeText(getActivity(), arrayList.get(i).getName(), Toast.LENGTH_LONG).show();
+                        addToPlayList addToPlayList = new addToPlayList();
+                        addToPlayList.setSong_name(arrayList.get(i).getName());
+                        addToPlayList.setAirtist_song(arrayList.get(i).getPath());
+                        addToPlayList.setDur_song(arrayList.get(i).getDuration());
+                        boolean kq = databaseActivity.InsertToPlayList(addToPlayList);
+                        if(kq)  Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_LONG).show();
+                        else Toast.makeText(getActivity(), "Thêm thất bại", Toast.LENGTH_LONG).show();
                     }
                 }
                 return true;

@@ -30,12 +30,12 @@ public class DatabaseActivity extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(this.pl_drop);
         onCreate(sqLiteDatabase);
     }
-    public boolean InsertSong(Song s) {
+    public boolean InsertToPlayList(addToPlayList addToPlayList) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("songname", s.getName());
-        cv.put("airtist", s.getPath());
-        cv.put("dur", s.getDuration());
+        cv.put("songname", addToPlayList.getSong_name());
+        cv.put("airtist", addToPlayList.getAirtist_song());
+        cv.put("dur", addToPlayList.getDur_song());
         long result = db.insert(TABLE_NAME, null, cv);
         db.close();
         if (result == -1)
@@ -43,12 +43,12 @@ public class DatabaseActivity extends SQLiteOpenHelper {
         else return true;
     }
 
-    public boolean DeleteSong(Song s){
+    public boolean DeleteFromPlayList(addToPlayList addToPlayList){
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String songname =s.getName();
+        String songname =addToPlayList.getSong_name();
         String []para = new String[1];
-        para[0]=s.getName();
+        para[0]=addToPlayList.getSong_name();
 
         long result = db.delete(TABLE_NAME,"songname=?",para);
 
@@ -56,7 +56,7 @@ public class DatabaseActivity extends SQLiteOpenHelper {
             return false;
         else return true;
     }
-    public Cursor ViewSong(){
+    public Cursor ViewPlayList(){
         Cursor c;
         SQLiteDatabase db = this.getReadableDatabase();
         String []cols = new String[4];

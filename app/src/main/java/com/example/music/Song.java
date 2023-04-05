@@ -13,6 +13,10 @@ public class Song implements Serializable{
         this.duration = duration;
     }
 
+    public Song(){
+
+    }
+
     public String getName() {
         return name;
     }
