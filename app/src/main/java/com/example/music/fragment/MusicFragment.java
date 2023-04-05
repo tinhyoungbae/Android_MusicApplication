@@ -105,7 +105,6 @@ public class MusicFragment extends Fragment {
                     artistList.add(songData.getDuration());
                 }
         }
-        System.out.println("playlist: " +MusicFragment.songData.getDuration());
         if(arrayList.size()==0){
             listView.setVisibility(View.VISIBLE);
         }
