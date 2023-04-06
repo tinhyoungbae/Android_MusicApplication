@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +27,17 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+
 public class MainActivity extends Activity {
+    DatabaseActivity databaseActivity;
     //Tạo thông báo
     public static final String CHANNEL_ID = "music";
 
@@ -108,6 +119,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        new readJsonSong().execute("https://nvt-8464.000webhostapp.com/server/getSong.php");
+
         TextView skip = findViewById(R.id.skip_text);
         TextView forgot = findViewById(R.id.forgotpassword);
         TextView register = findViewById(R.id.register);
@@ -149,5 +162,50 @@ public class MainActivity extends Activity {
                 onClickSignIn();
             }
         });
+    }
+
+    //Đọc JSON
+    private class readJsonSong extends AsyncTask<String, Void, String>{
+
+        @Override
+        protected String doInBackground(String... strings) {
+            StringBuilder content = new StringBuilder();
+            try {
+                URL url = new URL(strings[0]);
+                InputStreamReader inputStreamReader = new InputStreamReader(url.openConnection().getInputStream());
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null){
+                    content.append(line);
+                }
+                bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return content.toString();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            DatabaseActivity databaseActivity = new DatabaseActivity(MainActivity.this);
+            try {
+                JSONArray jsonArray = new JSONArray(s);
+                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                String name_song = jsonObject.getString("na_song");
+                String get_Uri = jsonObject.getString("ur_song");
+
+                addToPlayList addToPlayList = new addToPlayList();
+                addToPlayList.setSong_name(name_song);
+                addToPlayList.setUrl_song(get_Uri);
+                addToPlayList.setSinger_song("Internet Music");
+                boolean kq = databaseActivity.InsertToPlayList(addToPlayList);
+                if(kq)  Toast.makeText(MainActivity.this, "Thêm thành công", Toast.LENGTH_LONG).show();
+                else Toast.makeText(MainActivity.this, "Thêm thất bại", Toast.LENGTH_LONG).show();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

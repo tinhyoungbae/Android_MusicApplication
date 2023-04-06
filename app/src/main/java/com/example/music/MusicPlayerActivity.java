@@ -59,7 +59,7 @@ public class MusicPlayerActivity extends Activity {
     public void playSongFromPlayList(int i, ArrayList<addToPlayList> songsListFromPlayList){
         Play();
         textView.setText(songsListFromPlayList.get(i).getSong_name());
-        Uri uri = Uri.parse(Uri.parse(songsListFromPlayList.get(i).getAirtist_song()).toString());
+        Uri uri = Uri.parse(Uri.parse(songsListFromPlayList.get(i).getUrl_song()).toString());
         mediaPlayer = MediaPlayer.create(getApplicationContext(), uri);
         mediaPlayer.start();
     }
@@ -112,10 +112,10 @@ public class MusicPlayerActivity extends Activity {
     //Tạo thanh báo trên thanh trạng thái
     private void sendNotificationMedia(String s, int p){
         if(songsList != null && !songsList.isEmpty()) {
-            s = songsList.get(p).getDuration();
+            s = songsList.get(p).getSinger();
         }
         if(songsListFromPlayList != null && !songsListFromPlayList.isEmpty()){
-            s = songsListFromPlayList.get(p).getDur_song();
+            s = songsListFromPlayList.get(p).getSinger_song();
         }
         //Ảnh nền
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.taeyang);
@@ -214,8 +214,8 @@ public class MusicPlayerActivity extends Activity {
                         get_playlist_add.setImageResource(R.drawable.heart_full);
                         addToPlayList addToPlayList = new addToPlayList();
                         addToPlayList.setSong_name(songsList.get(pos).getName());
-                        addToPlayList.setAirtist_song(songsList.get(pos).getPath());
-                        addToPlayList.setDur_song(songsList.get(pos).getDuration());
+                        addToPlayList.setUrl_song(songsList.get(pos).getPath());
+                        addToPlayList.setSinger_song(songsList.get(pos).getSinger());
                         boolean kq = databaseActivity.InsertToPlayList(addToPlayList);
                         if(kq)  Toast.makeText(MusicPlayerActivity.this, "Thêm thành công", Toast.LENGTH_LONG).show();
                         else Toast.makeText(MusicPlayerActivity.this, "Thêm thất bại", Toast.LENGTH_LONG).show();

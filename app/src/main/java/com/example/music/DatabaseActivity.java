@@ -38,8 +38,8 @@ public class DatabaseActivity extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("songname", addToPlayList.getSong_name());
-        cv.put("airtist", addToPlayList.getAirtist_song());
-        cv.put("dur", addToPlayList.getDur_song());
+        cv.put("airtist", addToPlayList.getUrl_song());
+        cv.put("dur", addToPlayList.getSinger_song());
         long result = db.insert(TABLE_NAME, null, cv);
         db.close();
         if (result == -1)

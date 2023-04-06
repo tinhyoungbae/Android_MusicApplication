@@ -6,12 +6,12 @@ import java.io.Serializable;
 public class Song implements Serializable{
     private String name;
     private String path;
-    private String duration;
+    private String singer;
 
-    public Song(String name, String path, String duration) {
+    public Song(String name, String path, String singer) {
         this.name = name;
         this.path = path;
-        this.duration = duration;
+        this.singer = singer;
     }
 
     public Song(){
@@ -34,11 +34,11 @@ public class Song implements Serializable{
         this.path = path;
     }
 
-    public String getDuration() {
-        return duration;
+    public String getSinger() {
+        return singer;
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
+    public void setDuration(String singer) {
+        this.singer = singer;
     }
 }

@@ -80,9 +80,9 @@ public class MusicFragment extends Fragment {
                 //Đổ dữ liệu từ file lấy được vào Adapter
                 arrayList.add(new Song(cursor.getString(0), cursor.getString(1), cursor.getString(2)));
             listView.setAdapter(musicAdapter);
-            if(songData.getDuration() != null) {
+            if(songData.getSinger() != null) {
                 //Đổ dữ liệu vào artistList để cho SingerFragment nhận và đổ vào Adapter khác
-                artistList.add(songData.getDuration());
+                artistList.add(songData.getSinger());
             }
         }
         if(arrayList.size()==0){
@@ -129,8 +129,8 @@ public class MusicFragment extends Fragment {
                         //Đổ dữ liệu đó vào Cơ sở dữ liệu Playlist chứa các bài hát
                         addToPlayList addToPlayList = new addToPlayList();
                         addToPlayList.setSong_name(arrayList.get(i).getName());
-                        addToPlayList.setAirtist_song(arrayList.get(i).getPath());
-                        addToPlayList.setDur_song(arrayList.get(i).getDuration());
+                        addToPlayList.setUrl_song(arrayList.get(i).getPath());
+                        addToPlayList.setSinger_song(arrayList.get(i).getSinger());
                         boolean kq = databaseActivity.InsertToPlayList(addToPlayList);
                         if(kq)  Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_LONG).show();
                         else Toast.makeText(getActivity(), "Thêm thất bại", Toast.LENGTH_LONG).show();

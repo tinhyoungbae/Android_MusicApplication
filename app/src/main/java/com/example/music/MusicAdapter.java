@@ -49,7 +49,7 @@ public class MusicAdapter extends BaseAdapter {
 
         Song song = songList.get(i);
         getName.setText(song.getName());
-        getDur.setText(song.getDuration());
+        getDur.setText(song.getSinger());
 
         return view;
     }

@@ -50,8 +50,8 @@ public class PlayListAdapter extends BaseAdapter {
 
         addToPlayList addToPlayList = playList.get(i);
         getName.setText(addToPlayList.getSong_name());
-        getAir.setText(addToPlayList.getAirtist_song());
-        getDur.setText(addToPlayList.getDur_song());
+        getAir.setText(addToPlayList.getUrl_song());
+        getDur.setText(addToPlayList.getSinger_song());
 
         return view;
     }

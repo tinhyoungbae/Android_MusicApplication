@@ -5,13 +5,13 @@ import java.io.Serializable;
 //Custom cho Adapter(PlayListAdapter)
 public class addToPlayList implements Serializable {
     private String song_name;
-    private String airtist_song;
-    private String dur_song;
+    private String url_song;
+    private String singer_song;
 
-    public addToPlayList(String song_name, String airtist_song, String dur_song) {
+    public addToPlayList(String song_name, String url_song, String singer_song) {
         this.song_name = song_name;
-        this.airtist_song = airtist_song;
-        this.dur_song = dur_song;
+        this.url_song = url_song;
+        this.singer_song = singer_song;
     }
 
     public addToPlayList(){
@@ -26,19 +26,19 @@ public class addToPlayList implements Serializable {
         this.song_name = song_name;
     }
 
-    public String getAirtist_song() {
-        return airtist_song;
+    public String getUrl_song() {
+        return url_song;
     }
 
-    public void setAirtist_song(String airtist_song) {
-        this.airtist_song = airtist_song;
+    public void setUrl_song(String url_song) {
+        this.url_song = url_song;
     }
 
-    public String getDur_song() {
-        return dur_song;
+    public String getSinger_song() {
+        return singer_song;
     }
 
-    public void setDur_song(String dur_song) {
-        this.dur_song = dur_song;
+    public void setSinger_song(String singer_song) {
+        this.singer_song = singer_song;
     }
 }
